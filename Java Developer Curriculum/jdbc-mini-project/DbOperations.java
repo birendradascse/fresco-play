@@ -22,7 +22,8 @@ public class DbOperations {
     public boolean insertSubject(String name) throws SQLException {
         PreparedStatement preparedStatement = this.con.prepareStatement(INSERT_SUBJECT);
         preparedStatement.setString(1, name);
-        return preparedStatement.execute();
+        int rowAffected = preparedStatement.executeUpdate();
+        return rowAffected > 0;
     }
 
     public ArrayList getSubjectById(int id) throws SQLException {
